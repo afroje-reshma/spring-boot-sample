@@ -2,7 +2,8 @@ node {
     
     stage 'checkout'
     checkout scm
-    
+    def project_path = "spring-boot-samples/spring-boot-sample-atmosphere"
+
     
     stage 'sonar-scan'
     def scannerHome = tool 'sonar-scanner'
