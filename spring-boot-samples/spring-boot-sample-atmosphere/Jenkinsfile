@@ -34,7 +34,7 @@ stage 'publish-nexus'
      step([$class: 'NexusArtifactUploader',
      artifactId: 'piazza-ingest', classifier: 'artifact',
      credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
-     file: '/var/lib/jenkins/workspace/atmosphere/spring-boot-samples/spring-boot-sample-atmosphere/target/spring-boot-sample-atmosphere-1.4.1.RELEASE.jar',
+     file: '/var/lib/jenkins/workspace/atmosphere/spring-boot-samples/spring-boot-sample-atmosphere/target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar',
      groupId: 'org.venice.piazza',
      nexusUrl: '35.163.156.3:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
