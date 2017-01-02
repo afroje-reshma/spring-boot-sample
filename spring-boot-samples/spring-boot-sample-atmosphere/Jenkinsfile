@@ -29,7 +29,7 @@ stage 'Upload-artifact-nexus'
      
      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
                     usernameVariable: 'Username', passwordVariable: 'Password']]) {
-      sh "curl -XDELETE  -u $Username:$Password http://35.163.156.3:8081/nexus/content/repositories/releases/org/venice/piazza/piazza-ingest/1.5"
+      sh "curl -XDELETE  -u $Username:$Password http://35.163.156.3:8081/nexus/content/repositories/releases/org/venice/piazza/piazza-ingest/1.0"
     
      step([$class: 'NexusArtifactUploader',
      artifactId: 'piazza-ingest', classifier: 'artifact',
