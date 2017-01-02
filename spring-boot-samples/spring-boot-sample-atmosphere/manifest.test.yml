@@ -1,7 +1,7 @@
 applications:
 - name: resh-ingest
   host: resh-ingest
-  path: resh-ingest.jar
+  path: piazza-ingest.jar
   buildpack: 'https://github.com/cloudfoundry/java-buildpack.git'
   memory: 2048M
   instances: 1
