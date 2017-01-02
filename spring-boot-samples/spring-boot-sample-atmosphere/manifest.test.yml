@@ -1,0 +1,10 @@
+applications:
+- name: resh-ingest
+  host: resh-ingest
+  path: resh-ingest.jar
+  buildpack: 'https://github.com/cloudfoundry/java-buildpack.git'
+  memory: 2048M
+  instances: 1
+  timeout: 80
+  
+  
