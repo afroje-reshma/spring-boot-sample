@@ -41,7 +41,16 @@ stage 'Upload-artifact-nexus'
      repository: 'releases', type: 'jar', version: '1.0']) 
      
      
-       
+      
+stage 'cf-push'
+ withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '9c6e8b83-ea20-4147-aeac-61bc4446668a',
+ usernameVariable: 'Username', passwordVariable: 'Password']])  {
+sh " cf login -a http://api.run.pivotal.io $Username:$Password" }
+
+
+
+
+ 
      }
 
 
