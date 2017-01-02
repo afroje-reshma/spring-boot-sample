@@ -25,7 +25,7 @@ node {
      testResults: 'target/surefire-reports/TEST-*.xml'])
 
 
-stage 'publish-nexus'
+stage 'Upload-artifact-nexus'
      
      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
                     usernameVariable: 'Username', passwordVariable: 'Password']]) {
