@@ -7,7 +7,7 @@
 
 	<groupId>org.venice.piazza</groupId>
 	<artifactId>piazza-ingest</artifactId>
-	<version>1.0.0</version>
+	<version>${env.BUILD_NUMBER}</version>
 	<packaging>jar</packaging>
 
 	<parent>
