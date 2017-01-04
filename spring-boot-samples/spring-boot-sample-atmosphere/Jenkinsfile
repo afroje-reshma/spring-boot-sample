@@ -43,18 +43,17 @@ stage 'Upload-artifact-nexus'
      
       
 stage 'cf-push'
- withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '9c6e8b83-ea20-4147-aeac-61bc4446668a',
- usernameVariable: 'Username', passwordVariable: 'Password']])  {
-sh " cf login -a http://api.run.pivotal.io $Username:$Password" }
 
+withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '28fba85b-6f88-4e05-98bc-53a792ac3d07',
+                usernameVariable: 'Pusername', passwordVariable: 'Ppassword']]) 
 
-
-
- 
-     }
-
-
+{
+    sh "echo   PCF: username is $Pusername, password is $Ppassword"    
+    sh "cf login -a https://api.devops.geointservices.io --skip-ssl-validation = true, -u reshmaaj -p $Ppassword -o Piazza -s test"
+    
+    sh 'cf push resh-piazza -p /var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/target/piazza-ingest-1.0.0.jar'
+      } 
+    }
+   }
   }
-
- }
 }
