@@ -1,4 +1,4 @@
-node {
+  node {
     
     stage 'checkout'
     checkout scm
@@ -36,7 +36,7 @@ node {
      groupId: 'org.venice.piazza',
      nexusUrl: '35.160.229.253:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
-     repository: 'releases', type: 'jar', version: '*.jar']) 
+     repository: 'releases', type: 'jar', version: '1.0']) 
      
      
       /*stage 'cf-push'
@@ -47,11 +47,9 @@ node {
       sh "cf login -a https://api.devops.geointservices.io --skip-ssl-validation = true, -u reshmaaj -p $Ppassword -o Piazza -s test"
       sh 'cf push winter-app -m 1024M -p /var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/target/piazza-ingest-1.0.0.jar'
       sh 'cf bind-service winter-app reshservice ; cf restage winter-app'
-
-
-      
-} 
-/*    }
+      } 
+*/   
+ }
    }
   }
 }
