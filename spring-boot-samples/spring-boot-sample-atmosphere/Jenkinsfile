@@ -4,10 +4,10 @@ node {
     checkout scm
     def project_path = "spring-boot-samples/spring-boot-sample-atmosphere"
 
-    stage 'sonar-scan'
+    /*stage 'sonar-scan'
     def scannerHome = tool 'sonar-scanner'
     sh "${scannerHome}/bin/sonar-scanner"
-    
+    /*
      dir(project_path){
      withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
      stage 'compiling, packaging'    
@@ -39,7 +39,7 @@ node {
      repository: 'releases', type: 'jar', version: '*.jar']) 
      
      
-      stage 'cf-push'
+      /*stage 'cf-push'
 
       withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '28fba85b-6f88-4e05-98bc-53a792ac3d07',
                 usernameVariable: 'Pusername', passwordVariable: 'Ppassword']]) {
@@ -49,8 +49,9 @@ node {
       sh 'cf bind-service winter-app reshservice ; cf restage winter-app'
 
 
-      } 
-    }
+      
+} 
+/*    }
    }
   }
 }
