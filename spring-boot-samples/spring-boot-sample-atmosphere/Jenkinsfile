@@ -1,4 +1,4 @@
-  node {
+   node {
     
     stage 'checkout'
     checkout scm
@@ -49,7 +49,6 @@
       sh 'cf bind-service winter-app reshservice ; cf restage winter-app'
        
 */   }
- }
-   
-  }
+ 
+    }
 }
