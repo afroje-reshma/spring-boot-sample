@@ -1,6 +1,6 @@
 applications:
-- name: resh-ingest
-  host: resh-ingest
+- name: winter-app  
+  host: winter-app
   path: piazza-ingest.jar
   buildpack: 'https://github.com/cloudfoundry/java-buildpack.git'
   memory: 2048M
