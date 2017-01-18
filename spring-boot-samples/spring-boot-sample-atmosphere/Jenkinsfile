@@ -46,7 +46,7 @@
       sh "echo   PCF: username is $Pusername, password is $Ppassword"    
       sh "cf login -a https://api.devops.geointservices.io --skip-ssl-validation = true, -u reshmaaj -p $Ppassword -o Piazza -s test"
       sh 'cf push winter-app -m 1024M -p /var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/target/piazza-ingest-1.0.0.jar'
-      sh 'cf bind-service winter-app reshservice ; cf restage reshjenkins-app'
+      sh 'cf bind-service reshjenkins-app reshservice ; cf restage reshjenkins-app'
        
    }
  
