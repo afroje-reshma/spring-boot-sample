@@ -36,7 +36,7 @@
      groupId: 'org.venice.piazza',
      nexusUrl: '35.160.229.253:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
-           repository: 'releases', type: 'jar', version: '1.0.x+']) 
+           repository: 'releases', type: 'jar', version: 'git rev-parse --short HEAD']) 
      
      
       stage 'cf-push'
