@@ -7,8 +7,8 @@
 
 	<groupId>org.venice.piazza</groupId>
 	<artifactId>piazza-ingest</artifactId>
-	<version>${version}</version>
-	<packaging>${packaging}</packaging>
+	<version>$version</version>
+	<packaging>jar</packaging>
 
 	<parent>
 		<!-- Your own application should inherit from spring-boot-starter-parent -->
