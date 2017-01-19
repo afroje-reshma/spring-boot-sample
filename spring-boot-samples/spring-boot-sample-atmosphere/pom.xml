@@ -8,13 +8,14 @@
 	<groupId>org.venice.piazza</groupId>
 	<artifactId>piazza-ingest</artifactId>
 	<version>1.0.0</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<!-- Your own application should inherit from spring-boot-starter-parent -->
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.1.RELEASE</version>
+		<packaging>pom</packaging>
 	</parent>
 	
 	<name>Spring Boot Atmosphere Sample</name>
