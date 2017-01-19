@@ -4,10 +4,10 @@
     checkout scm
     def project_path = "spring-boot-samples/spring-boot-sample-atmosphere"
 
-    /*stage 'sonar-scan'
+    stage 'sonar-scan'
     def scannerHome = tool 'sonar-scanner'
     sh "${scannerHome}/bin/sonar-scanner"
-    */
+    
      dir(project_path){
      withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
      stage 'compiling, packaging'    
