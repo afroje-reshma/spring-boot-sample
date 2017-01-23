@@ -10,7 +10,8 @@
     
      dir(project_path){
      withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
-     stage 'compiling, packaging'    
+     stage 'compiling, packaging'
+     sh 'mvn clean compile'   
      sh 'mvn clean package'
      
      stage 'test-archival/HTML-verify'
