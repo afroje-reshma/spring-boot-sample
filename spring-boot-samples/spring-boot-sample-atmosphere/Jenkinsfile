@@ -39,7 +39,7 @@ node {
      groupId: 'org.venice.piazza',
      nexusUrl: '35.160.229.253:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
-           repository: 'releases', type: 'jar', version: "${env.BUILD_ID}"]) 
+     repository: 'releases', type: 'jar', version: "${env.BUILD_ID}", type: 'pom']) 
      
      
       stage 'cf-deploy'
