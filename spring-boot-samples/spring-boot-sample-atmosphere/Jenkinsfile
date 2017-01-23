@@ -5,10 +5,10 @@ node {
     checkout scm
     def project_path = "spring-boot-samples/spring-boot-sample-atmosphere"
 
-    stage 'sonar-scan'
+    /*  stage 'sonar-scan'
     def scannerHome = tool 'sonar-scanner'
     sh "${scannerHome}/bin/sonar-scanner"
-    
+    */
      dir(project_path){
      withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
      stage 'compiling, packaging'
@@ -39,7 +39,7 @@ node {
      groupId: 'org.venice.piazza',
      nexusUrl: '35.160.229.253:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
-     repository: 'releases', type: 'jar', version: "${env.BUILD_ID}", type: 'pom']) 
+     repository: 'releases', type: 'pom.xml', type: 'jar', version: "${env.BUILD_ID}",]) 
      
      
       stage 'cf-deploy'
