@@ -7,10 +7,10 @@ node {
 
      stage 'sonar-scan'
     def scannerHome = tool 'sonar-scanner'
-    sh "${scannerHome}/bin/sonar-scanner
-    sonar.projectKey=reshma: project
-    sonar.projectName=pipeline-job project
-    sonar.projectVersion=2.0
+    sh "${scannerHome}/bin/sonar-scanner;
+    sonar.projectKey=reshma: project;
+    sonar.projectName=pipeline-job project;
+    sonar.projectVersion=2.0;
     sonar.sources=."
 
    
