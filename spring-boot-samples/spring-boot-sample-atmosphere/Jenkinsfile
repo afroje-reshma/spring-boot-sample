@@ -7,7 +7,7 @@ node {
 
      stage 'sonar-scan'
     def scannerHome = tool 'sonar-scanner'
-    sh "${scannerHome}/bin/sonar-scanner
+    sh "${scannerHome}/bin/sonar-scanner''\n'';
     -Dsonar.host.url=http://localhost:9000
     -Dsonar.projectKey=reshma: project
     -Dsonar.projectName=pipeline-job project
