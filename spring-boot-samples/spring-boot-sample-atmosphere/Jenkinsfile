@@ -9,9 +9,9 @@ node {
     
      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '2086befd-7e8c-4149-ae4e-e53b4803bd8b',
                 usernameVariable: 'username', passwordVariable: 'password']]) {
-      sh "echo   PCF: username is $username, password is $password"  
+      sh "echo   SONARQUBE: username is $username, password is $password"  
     def scannerHome = tool 'sonar-scanner'
-    sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://localhost:9000 -Dsonar.projectKey=roshni -Dsonar.projectName=jenkinsfile-pipeline  -Dsonar.projectVersion=2.0 -Dsonar.sources=."
+    sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://localhost:9000 -Dsonar.username=$username -Dsonar.password=$password -Dsonar.projectKey=roshni -Dsonar.projectName=jenkinsfile-pipeline  -Dsonar.projectVersion=2.0 -Dsonar.sources=."
 
    
      dir(project_path){
