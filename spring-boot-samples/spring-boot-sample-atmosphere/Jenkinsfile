@@ -56,7 +56,7 @@ node {
       sh 'cf bind-service winter1-app reshservice ; cf restage winter1-app'
        
    
-      }
+      
     }
  }
    }
