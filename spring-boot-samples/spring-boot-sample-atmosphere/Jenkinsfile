@@ -6,6 +6,10 @@ node {
     def project_path = "spring-boot-samples/spring-boot-sample-atmosphere"
 
      stage 'sonar-scan'
+    
+     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '2086befd-7e8c-4149-ae4e-e53b4803bd8b',
+                usernameVariable: 'username', passwordVariable: 'password']]) {
+      sh "echo   PCF: username is $username, password is $password"  
     def scannerHome = tool 'sonar-scanner'
     sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://localhost:9000 -Dsonar.projectKey=roshni -Dsonar.projectName=jenkinsfile-pipeline  -Dsonar.projectVersion=2.0 -Dsonar.sources=."
 
@@ -52,7 +56,7 @@ node {
       sh 'cf bind-service winter1-app reshservice ; cf restage winter1-app'
        
    
- 
+      }
     }
  }
    }
