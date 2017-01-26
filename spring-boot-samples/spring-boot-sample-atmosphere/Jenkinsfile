@@ -15,6 +15,9 @@ node {
 
    
      dir(project_path){
+     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
+                    usernameVariable: 'Username', passwordVariable: 'Password']]) {    
+        
      withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
      stage 'compiling, packaging'
      sh 'mvn clean compile'   
@@ -62,4 +65,5 @@ node {
      }
    }
   }
-}   
+ }   
+}    
