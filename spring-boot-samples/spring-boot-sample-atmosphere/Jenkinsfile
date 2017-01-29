@@ -22,9 +22,9 @@ node {
      sh 'mvn clean compile',   
      sh 'mvn clean package',
      sh 'mvn clean deploy',
-        -url='http://localhost:8081/nexus/content/repositories/releases/org/venice/piazza/pom.xml',
-        -DrepositoryId='nexus',
-        -DgeneratePom='$genpom'
+        -url='http://localhost:8081/nexus',
+        -repositoryId='nexus',
+        -generatePom='$genpom'
      
      stage 'test-archival/HTML-verify'
      publishHTML(target: [allowMissing: true,
