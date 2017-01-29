@@ -18,10 +18,11 @@ node {
      withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
      stage 'compiling, packaging'
      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
-                    usernameVariable: 'Username', passwordVariable: 'Password']]) {    
+                    usernameVariable: 'Username1', passwordVariable: 'Password1']]) {    
      sh 'mvn clean compile'   
      sh 'mvn clean package'
-     sh 'mvn clean deploy'
+      sh "${mvnHome}/mvn --quiet deploy:deploy-file -Durl=http://localhost:8081/nexus username=$Username1 password=$Password1"
+        
        
      
      stage 'test-archival/HTML-verify'
