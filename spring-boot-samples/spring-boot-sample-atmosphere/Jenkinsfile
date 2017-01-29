@@ -21,7 +21,7 @@ node {
                     usernameVariable: 'Username1', passwordVariable: 'Password1']]) {    
      sh 'mvn clean compile'   
      sh 'mvn clean package'
-      sh "mvn clean deploy -Durl=http://localhost:8081/nexus username=$Username1 password=$Password1"
+      sh "mvn clean deploy -Durl=http://localhost:8081/nexus"
         
        
      
