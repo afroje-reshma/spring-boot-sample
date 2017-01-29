@@ -22,9 +22,9 @@ node {
      sh 'mvn clean compile',   
      sh 'mvn clean package',
      sh 'mvn clean deploy',
-        -url='http://localhost:8081/nexus',
-        -repositoryId='nexus',
-        -generatePom='$genpom'
+        nexusUrl='http://localhost:8081/nexus',
+        credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096'
+        
      
      stage 'test-archival/HTML-verify'
      publishHTML(target: [allowMissing: true,
