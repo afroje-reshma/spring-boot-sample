@@ -17,9 +17,15 @@ node {
      dir(project_path){
      withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
      stage 'compiling, packaging'
+     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
+                    usernameVariable: 'Username', passwordVariable: 'Password']]) {    
      sh 'mvn clean compile'   
      sh 'mvn clean package'
-       
+     sh "mvn clean deploy:deploy-file \
+        -Durl="http://localhost:8081/nexus/content/repositories" \
+        -DrepositoryId=nexus \
+        -Dfile=$ARTIFACT \
+        -DgeneratePom=$genpom"
      
      stage 'test-archival/HTML-verify'
      publishHTML(target: [allowMissing: true,
@@ -41,7 +47,6 @@ node {
      artifactId: 'piazza-ingest', classifier: 'artifact',
      credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
      file: '/var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/target/piazza-ingest-1.0.0.jar',
-     file: '/var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/pom.xml',
      groupId: 'org.venice.piazza',
      nexusUrl: '35.160.229.253:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
@@ -63,5 +68,5 @@ node {
      }
    }
   }
-} 
-   
+ } 
+}   
