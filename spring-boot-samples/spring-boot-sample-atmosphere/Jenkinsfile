@@ -22,7 +22,7 @@ node {
      sh 'mvn clean compile'   
      sh 'mvn clean package'
      sh "mvn clean deploy:deploy-file \
-        -Durl="http://localhost:8081/nexus/content/repositories" \
+        -Durl=http://localhost:8081/nexus/content/repositories \
         -DrepositoryId=nexus \
         -Dfile=$ARTIFACT \
         -DgeneratePom=$genpom"
