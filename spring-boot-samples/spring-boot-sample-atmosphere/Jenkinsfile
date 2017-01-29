@@ -17,8 +17,11 @@ node {
      dir(project_path){
      withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
      stage 'compiling, packaging'
+     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
+                    usernameVariable: 'Username', passwordVariable: 'Password']]) {    
      sh 'mvn clean compile'   
      sh 'mvn clean package'
+     sh 'mvn clean deploy'
        
      
      stage 'test-archival/HTML-verify'
@@ -56,7 +59,7 @@ node {
       sh 'cf push winter1-app -m 1024M -p /var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/target/piazza-ingest-1.0.0.jar -b  https://github.com/cloudfoundry/java-buildpack.git'
       sh 'cf bind-service winter1-app reshservice ; cf restage winter1-app'
        
-   
+      }
       
       }
      }
