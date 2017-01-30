@@ -20,7 +20,7 @@ node {
                     usernameVariable: 'Username1', passwordVariable: 'Password1']]) {    
      sh 'mvn clean compile'   
      sh 'mvn clean package'
-     sh "curl -v -u admin:admin123 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-sample-atmosphere/pom.xml
+     sh "curl -v -u admin:admin123 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-sample-atmosphere/pom.xml"
         
         
        
