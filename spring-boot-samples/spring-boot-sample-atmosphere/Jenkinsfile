@@ -1,30 +1,29 @@
 
-
-
-
 node {
-    stage 'checkout'   
+    stage 'Checkout'   
     checkout scm
     def project_path = "spring-boot-samples/spring-boot-sample-atmosphere"
 
-    // stage 'sonar-scan'
+    stage 'Sonar-Scan'
     
-    // withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '2086befd-7e8c-4149-ae4e-e53b4803bd8b',
-               // usernameVariable: 'username', passwordVariable: 'password']]) {
-     // sh "echo   SONARQUBE: username is $username, password is $password"  
-   // def scannerHome = tool 'sonar-scanner'
-  // sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://localhost:9000 -Dsonar.username=$username -Dsonar.password=$password -Dsonar.projectKey=roshni -Dsonar.projectName=jenkinsfile-pipeline  -Dsonar.projectVersion=2.0 -Dsonar.sources=."
-   
-        dir(project_path){
+    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '2086befd-7e8c-4149-ae4e-e53b4803bd8b',
+               usernameVariable: 'username', passwordVariable: 'password']]) {
+    sh "echo   SONARQUBE: username is $username, password is $password"  
+    def scannerHome = tool 'sonar-scanner'
+    sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://localhost:9000 -Dsonar.username=$username -Dsonar.password=$password -Dsonar.projectKey=roshni -Dsonar.projectName=jenkinsfile-pipeline  -Dsonar.projectVersion=2.0 -Dsonar.sources=."
+           
+        
+     dir(project_path){
      withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
-     stage 'compiling, packaging'
+     
+     stage 'Compiling-Packaging'
      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
                     usernameVariable: 'Username1', passwordVariable: 'Password1']]) {    
      sh 'mvn clean compile'   
      sh 'mvn clean package'     
      sh "curl -v -u $Username1:$Password1 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-sample-atmosphere/pom.xml"
       
-     stage 'test-archival/HTML-verify'
+     stage 'Test-archival/HTML-verify'
      publishHTML(target: [allowMissing: true,
      alwaysLinkToLastBuild: false, 
      keepAll: true, 
@@ -34,7 +33,7 @@ node {
      step([$class: 'JUnitResultArchiver',
      testResults: 'target/surefire-reports/TEST-*.xml'])
 
-     stage 'nexus-upload'
+     stage 'Nexus-Upload'
      
      /*withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
                     usernameVariable: 'Username', passwordVariable: 'Password']]) {
@@ -50,17 +49,13 @@ node {
      repository: 'releases', type: 'jar', version: "${env.BUILD_ID}",]) 
      
      
-      stage 'cf-deploy'
+      stage 'Deploy'
 
       withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '28fba85b-6f88-4e05-98bc-53a792ac3d07',
                 usernameVariable: 'Pusername', passwordVariable: 'Ppassword']]) {
     //  sh "echo   PCF: username is $Pusername, password is $Ppassword"    
       sh "cf login -a https://api.devops.geointservices.io --skip-ssl-validation = true, -u $Pusername -p $Ppassword -o Piazza -s test"
          
-     // sh 'cf push winter-app -m 1024M -p /var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/target/piazza-ingest-1.0.0.jar -b  https://github.com/cloudfoundry/java-buildpack.git'
-    //  sh 'cf bind-service winter-app reshservice ; cf restage winter-app'
-          
-          
           node {
               }
           input 'Deploy to staging?'
@@ -75,5 +70,5 @@ node {
    }
  
     }
-//} 
+} 
    
