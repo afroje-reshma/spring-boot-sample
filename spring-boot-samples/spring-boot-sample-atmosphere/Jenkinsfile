@@ -44,7 +44,7 @@ node {
      step([$class: 'NexusArtifactUploader',
      artifactId:'spring-boot-samples', classifier: 'artifact',
      credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
-     file: '/var/lib/jenkins/workspace/jenkinsfile-pipeline/spring-boot-samples/spring-boot-sample-atmosphere/target/ piazza-ingest-1.0.0.jar',
+     file: '/var/lib/jenkins/workspace/jenkinsfile-pipeline/spring-boot-samples/spring-boot-sample-atmosphere/target/spring-boot-samples-1.4.0.BUILD-SNAPSHOT.jar',
      groupId: 'org.springframework.boot',
      nexusUrl: '35.160.229.253:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
