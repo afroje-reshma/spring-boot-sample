@@ -20,7 +20,7 @@ node {
                     usernameVariable: 'Username1', passwordVariable: 'Password1']]) {    
      sh 'mvn clean compile'   
      sh 'mvn clean package'
-     sh "curl -v -u admin:admin123 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-samples/pom.xml"
+     sh "curl -v -u admin:admin123 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-sample-atmosphere/pom.xml"
         
         
        
@@ -48,7 +48,7 @@ node {
      groupId: 'org.springframework.boot',
      nexusUrl: '35.160.229.253:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
-     repository: 'snapshots', type: 'jar', version: "${env.BUILD_ID}",]) 
+     repository: 'snapshots', type: 'jar', version: '1.4.0',]) 
      
      
      // stage 'cf-deploy'
