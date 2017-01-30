@@ -21,13 +21,13 @@
 	<properties>
 		<main.basedir>${basedir}/../..</main.basedir>
 	</properties>
-	<distributionManagement>
+	<!--distributionManagement>
     <repository>
       <id>nexus</id>
       <name>Nexus Repo</name>
       <url>https://35.160.229.253:8081/nexus/content/repositories/springframework.boot</url>
     </repository>
-  </distributionManagement>
+  </distributionManagement -->
 
 	<dependencies>
 		<dependency>
