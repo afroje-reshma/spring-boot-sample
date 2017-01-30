@@ -42,7 +42,7 @@ node {
       sh "curl -XDELETE  -u $Username:$Password http://35.160.229.253:8081/nexus/content/repositories/releases/org/venice/piazza/piazza-ingest/1.0"
      */
      step([$class: 'NexusArtifactUploader',
-     artifactId:'spring-boot-samples', classifier: 'artifact',
+     artifactId:'spring-boot-sample-atmosphere', classifier: 'artifact',
      credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
      file: '/var/lib/jenkins/workspace/jenkinsfile-pipeline/spring-boot-samples/spring-boot-sample-atmosphere/target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar',
      groupId: 'org.springframework.boot',
