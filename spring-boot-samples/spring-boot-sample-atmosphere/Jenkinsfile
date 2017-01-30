@@ -21,7 +21,10 @@ node {
      sh 'mvn clean compile'   
      sh 'mvn clean package'
      sh "curl -v -u $Username1:$Password1 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-sample-atmosphere/pom.xml"
-        
+     def version() {
+    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+    matcher ? matcher[0][1] : null
+  
         
        
      
@@ -65,6 +68,7 @@ node {
       }
      }
    }
-  //}
+} 
+    //}
 //} 
    
