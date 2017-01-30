@@ -46,7 +46,7 @@ node {
      credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
      file: '/var/lib/jenkins/workspace/jenkinsfile-pipeline/spring-boot-samples/spring-boot-sample-atmosphere/target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar',
      groupId: 'org.springframework.boot',
-     nexusUrl: '35.160.229.253:8081/nexus/content/repositories/snapshots', 
+     nexusUrl: '35.160.229.253:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
      repository: 'releases', type: 'jar', version: '1.4.0',]) 
      
