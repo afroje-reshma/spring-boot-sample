@@ -49,23 +49,23 @@ node {
      groupId: 'org.venice.piazza',
      nexusUrl: '35.160.229.253:8081/nexus', 
      nexusVersion: 'NEXUS2', protocol: 'http',
-     repository: 'releases', type: 'jar', version: "${env.BUILD_ID}",]) 
+     repository: 'snapshots', type: 'jar', version: "${env.BUILD_ID}",]) 
      
      
-      stage 'cf-deploy'
+     // stage 'cf-deploy'
 
-      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '28fba85b-6f88-4e05-98bc-53a792ac3d07',
-                usernameVariable: 'Pusername', passwordVariable: 'Ppassword']]) {
-      sh "echo   PCF: username is $Pusername, password is $Ppassword"    
-      sh "cf login -a https://api.devops.geointservices.io --skip-ssl-validation = true, -u $Pusername -p $Ppassword -o Piazza -s test"
-      sh 'cf push winter1-app -m 1024M -p /var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/target/piazza-ingest-1.0.0.jar -b  https://github.com/cloudfoundry/java-buildpack.git'
-      sh 'cf bind-service winter1-app reshservice ; cf restage winter1-app'
+     // withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '28fba85b-6f88-4e05-98bc-53a792ac3d07',
+               // usernameVariable: 'Pusername', passwordVariable: 'Ppassword']]) {
+    //  sh "echo   PCF: username is $Pusername, password is $Ppassword"    
+     // sh "cf login -a https://api.devops.geointservices.io --skip-ssl-validation = true, -u $Pusername -p $Ppassword -o Piazza -s test"
+     // sh 'cf push winter-app -m 1024M -p /var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/target/piazza-ingest-1.0.0.jar -b  https://github.com/cloudfoundry/java-buildpack.git'
+    //  sh 'cf bind-service winter-app reshservice ; cf restage winter-app'
        
       }
       
       }
      }
    }
-  }
+  //}
 //} 
    
