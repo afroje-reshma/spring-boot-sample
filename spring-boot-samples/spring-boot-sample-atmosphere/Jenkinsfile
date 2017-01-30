@@ -23,9 +23,10 @@ node {
      //sh "curl -v -u $Username1:$Password1 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-sample-atmosphere/pom.xml"
      
      def version() {
+      sh "curl -v --upload pom.xml"   
      def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
      matcher ? matcher[0][1] : null
-         sh "curl -v --upload pom.xml"
+         
          
      
         
