@@ -32,7 +32,7 @@
     <repository>
       <id>nexus</id>
       <name>Nexus Repo</name>
-      <url>https://35.160.229.253:8081/nexus/content/repositories/venice.piazza</url>
+      <url>https://35.160.229.253:8081/nexus/content/repositories/springframework.boot</url>
     </repository>
   </distributionManagement>
 
