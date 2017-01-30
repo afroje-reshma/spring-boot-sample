@@ -63,6 +63,8 @@ node {
               }
           input 'Deploy to staging?'
           
+         sh 'cf push winter-app -m 1024M -p /var/lib/jenkins/workspace/jenkinsfiletest1/spring-boot-samples/spring-boot-sample-atmosphere/target/piazza-ingest-1.0.0.jar -b  https://github.com/cloudfoundry/java-buildpack.git'
+         sh 'cf bind-service winter-app reshservice ; cf restage winter-app' 
        
       }
       
