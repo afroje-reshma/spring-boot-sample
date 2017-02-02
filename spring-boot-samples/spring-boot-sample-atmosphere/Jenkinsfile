@@ -22,8 +22,8 @@ node {
          
      sh 'mvn clean compile'   
      sh 'mvn clean package'     
-     sh "curl -v -u $Username1:$Password1 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-sample-atmosphere/pom.xml"
-     mvn versions:'set -DgenerateBackupPoms=false -DnewVersion=$branch-SNAPSHOT'
+     sh "curl -v -u $Username1:$Password1 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-sample-atmosphere/pom.xml -DnewVersion=$branch-SNAPSHOT"
+    
      
      stage 'Test-archival/HTML-verify'
      publishHTML(target: [allowMissing: true,
