@@ -20,7 +20,7 @@ node {
      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
                     usernameVariable: 'Username1', passwordVariable: 'Password1']]) {    
      
-     branch=$(git rev-parse --abbrev-ref HEAD)    
+     def branch=$(git rev-parse --abbrev-ref HEAD)    
          
      sh 'mvn clean compile'   
      sh 'mvn clean package'     
