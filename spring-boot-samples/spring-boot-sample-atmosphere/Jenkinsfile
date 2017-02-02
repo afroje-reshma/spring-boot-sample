@@ -19,10 +19,14 @@ node {
      stage 'Compiling-Packaging'
      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
                     usernameVariable: 'Username1', passwordVariable: 'Password1']]) {    
+     
+     branch=$(git rev-parse --abbrev-ref HEAD)    
+         
      sh 'mvn clean compile'   
      sh 'mvn clean package'     
      sh "curl -v -u $Username1:$Password1 --upload-file pom.xml http://localhost:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-sample-atmosphere/pom.xml"
-      
+     mvn versions:'set -DgenerateBackupPoms=false -DnewVersion=$branch-SNAPSHOT'
+     
      stage 'Test-archival/HTML-verify'
      publishHTML(target: [allowMissing: true,
      alwaysLinkToLastBuild: false, 
